@@ -21,26 +21,57 @@ visible: boolean = false;
 view: boolean = false;
 view2: boolean = false;
 isDarkMode: boolean = false;
+animateSkills = false;
+animateProjects = false;
+animateContact = false;
+animateHome = false;
+animationClasses = ['fadeinleft', 'fadeindown' , 'zoomindown']; // Agrega más si quieres
+
 
 constructor(private router: Router, ){}
-@ViewChild('skills') skillsSection!: ElementRef;
-@ViewChild('proyectos') proyectosSection!: ElementRef;
-@ViewChild('contact') contactSection!: ElementRef;
-@ViewChild('home') homeSection!: ElementRef;
 
-  scrollToSkills() {
-    this.skillsSection.nativeElement.scrollIntoView({ behavior: 'smooth' });
+  scrollToSection(sectionId: string) {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
   }
-  scrollToproyecto() {
-    this.proyectosSection.nativeElement.scrollIntoView({ behavior: 'smooth' });
-  }
-  scrollTocontact() {
-    this.contactSection.nativeElement.scrollIntoView({ behavior: 'smooth' });
-  }
-  scrollTohome() {
-    this.homeSection.nativeElement.scrollIntoView({ behavior: 'smooth' });
+}
+
+observer!: IntersectionObserver;
+  observedElements: Element[] = [];
+
+  ngAfterViewInit() {
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            this.restartAnimations(entry.target as HTMLElement);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    // Seleccionar todas las secciones con clase 'observed-section'
+    this.observedElements = Array.from(document.querySelectorAll('.observed-section'));
+    this.observedElements.forEach(el => this.observer.observe(el));
   }
 
+  restartAnimations(sectionEl: HTMLElement) {
+  this.animationClasses.forEach(animationClass => {
+    const animElements = sectionEl.querySelectorAll(`.${animationClass}`);
+
+    animElements.forEach(el => {
+      el.classList.remove(animationClass);
+      void (el as HTMLElement).offsetWidth;
+     el.classList.add(animationClass);
+      });
+    });
+  }
+
+  ngOnDestroy() {
+    this.observedElements.forEach(el => this.observer.unobserve(el));
+  }
   
 viewcv() {
   this.view = !this.view; // Alterna entre true y false
@@ -112,6 +143,8 @@ cvDownload(){
   link.click();
 }
 
+
+//darkMode
 darkMode(){
   this.isDarkMode = !this.isDarkMode;
   const body = document.body;
@@ -130,25 +163,25 @@ darkMode(){
 ngOnInit(): void {
   this.items = [
       {
-          label: 'Home',
-          icon: 'pi pi-home',
-          command: () => {
-            this.scrollTohome();
-          },
-      },
+    label: 'Home',
+    icon: 'pi pi-home',
+    command: () => {
+      this.scrollToSection('home');
+    }
+  },
       {
           label: 'Experience',
           icon: 'pi pi-crown',
           command: () => {
               // this.router.navigate(['/installation']);
-              this.scrollToSkills();
+              this.scrollToSection('skills');
           }
       },
       {
           label: 'Projects',
           icon: 'pi pi-building',
           command: () => {
-            this.scrollToproyecto();
+             this.scrollToSection('projects');
           },
       },
       {
@@ -165,12 +198,16 @@ ngOnInit(): void {
         label: 'Contact me',
         icon: 'pi pi-envelope',
         command: () => {
-            this.scrollTocontact();
+            this.scrollToSection('contact');
           },
         
         
     }
   ];
+
+
+  
+
 }
 
 }
