@@ -55,7 +55,7 @@
 
 .hidden-before-animate {
   opacity: 0;
-  transform: translateY(20px); /* o según la dirección de la animación */
+  transform: translateY(50px); /* o según la dirección de la animación */
   transition: none;
 }
 
