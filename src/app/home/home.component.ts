@@ -49,7 +49,7 @@ observer!: IntersectionObserver;
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0 }
     );
 
     // Seleccionar todas las secciones con clase 'observed-section'
