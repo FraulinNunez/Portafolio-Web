@@ -53,6 +53,12 @@
   scroll-padding-top: 100px; /* Ajusta al alto de tu menú fijo */
 }
 
+.hidden-before-animate {
+  opacity: 0;
+  transform: translateY(20px); /* o según la dirección de la animación */
+  transition: none;
+}
+
 /* DarkMode */
 
 @media (prefers-color-scheme: dark) {

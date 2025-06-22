@@ -60,14 +60,13 @@ observer!: IntersectionObserver;
   restartAnimations(sectionEl: HTMLElement) {
   this.animationClasses.forEach(animationClass => {
     const animElements = sectionEl.querySelectorAll(`.${animationClass}`);
-
     animElements.forEach(el => {
-      el.classList.remove(animationClass);
+      el.classList.remove(animationClass, 'hidden-before-animate');
       void (el as HTMLElement).offsetWidth;
-     el.classList.add(animationClass);
-      });
+      el.classList.add(animationClass);
     });
-  }
+  });
+}
 
   ngOnDestroy() {
     this.observedElements.forEach(el => this.observer.unobserve(el));
