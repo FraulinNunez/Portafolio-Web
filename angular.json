@@ -45,8 +45,9 @@
                   "maximumError": "4kB"
                 }
               ],
-              "outputHashing": "all"
-            },
+              "outputHashing": "all",
+              "baseHref": "/Portafolio-Web/"
+            }, 
             "development": {
               "optimization": false,
               "extractLicenses": false,
@@ -89,6 +90,9 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
