@@ -1,0 +1,652 @@
+<div class="card">
+  <p-menubar class="fixed z-3 top-0 w-full" [model]="items">
+    <ng-template pTemplate="end">
+      <div class="flex aligh-item-center">
+        <p-button
+          class="mr-2 mt-2 border-round"
+          severity="secondary"
+          icon="pi pi-moon"
+          (onClick)="darkMode()"
+        >
+        </p-button>
+        <img src="logo1.png" alt="logo" height="45" />
+      </div>
+    </ng-template>
+
+    <ng-template #item let-item>
+      <ng-container *ngIf="item.route; else urlRef">
+        <a routerLink="item.route" class="p-menubar-item-link">
+          <span [class]="item.icon"></span>
+          <span class="ml-2">{{ item.label }}</span>
+        </a>
+      </ng-container>
+      <ng-template #urlRef>
+        <a
+          *ngIf="item.url; else noLink"
+          [href]="item.url"
+          class="p-menubar-item-link"
+        >
+          <span [class]="item.icon"></span>
+          <span class="ml-2">{{ item.label }}</span>
+        </a>
+      </ng-template>
+      <ng-template #noLink>
+        <div class="p-menubar-item-link">
+          <span [class]="item.icon"></span>
+          <span class="ml-2">{{ item.label }}</span>
+          <span class="pi pi-fw pi-angle-down ml-2"></span>
+        </div>
+      </ng-template>
+    </ng-template>
+  </p-menubar>
+</div>
+
+<p-drawer
+  [(visible)]="visible"
+  styleClass="w-full sm:w-30rem md:w-6 lg:w-7 xl:w-7"
+>
+  <ng-template #header>
+    <div class="flex flex-column">
+      <div class="font-bold text-xl">About Me</div>
+      <div class="flex-column bg-orange-500 py-1 w-full mx-auto mt-1"></div>
+    </div>
+  </ng-template>
+  <div class="text-center p-4">
+    <h2 class="text-xl font-semibold mb-4 fadeinleft animation-duration-1000">
+      ¡Hola! Soy Fraulin Nuñez
+    </h2>
+    <img
+      src="avatarpng.png"
+      alt="Perfil"
+      class="xl:w-25rem xl:h-25rem lg:w-20rem lg:h-20rem md:w-15rem md:h-15rem sm:w-13rem sm:h-13rem w-10rem h-10rem rounded-full mb-4 fadeinleft animation-duration-500"
+    />
+    <div class="mb-4 text-xl fadeinleft animation-duration-500">
+      I'm a Systems Engineering student, passionate about computing and new
+      technologies. I'm currently working in web development, using technologies
+      such as Angular, Ionic, React, HTML, CSS, JavaScript, and TypeScript.
+      Throughout my studies, I've worked on projects that have allowed me to
+      gain experience with tools such as PrimeNG and PrimeFlex.
+    </div>
+    <div class="mb-4 text-xl fadeinleft animation-duration-500">
+      If you have any questions or would like to learn more, don't hesitate to
+      contact me. I'm open to collaborating on new projects and learning more
+      every day!
+    </div>
+
+    <p-button
+      class="fadeinleft animation-duration-500"
+      (onClick)="viewcv()"
+      label="View CV"
+      icon="pi pi-angle-down"
+      iconPos="right"
+      [severity]="isDarkMode ? 'secondary' : 'contrast' "
+    ></p-button>
+
+    <div *ngIf="view" class="mt-5 fadeinleft animation-duration-500">
+
+      <div class="card flex justify-content-center">
+        <p-image src="cv.png" [preview]="true" alt="Image" width="400">
+          <ng-template
+            pTemplate="preview"
+            let-style="style"
+            let-previewCallback="previewCallback"
+          >
+            <div #panzoomContainer class="preview-container">
+              <img
+                class="fadeinleft animation-duration-500"
+                src="cvfraulin.png"
+                alt="image"
+                [style]="style"
+                (click)="previewCallback()"
+              />
+            </div>
+          </ng-template>
+        </p-image>
+      </div>
+    </div>
+
+    <div *ngIf="view">
+      <div class="cursor-pointer text-blue-500">
+        <a (click)="viewcertificate()">Do you want to see my Certificates?</a>
+      </div>
+      <div *ngIf="view2" class="flex flex-column justify-content-center text-center mt-4 ">
+        <p-image
+        class="flex justify-content-center"
+          src="/certificado1 (1).png"
+          [preview]="true"
+          alt="Image"
+          width="400"
+        >
+          <ng-template pTemplate="indicator">
+            <i class="pi pi-search"></i>
+          </ng-template>
+          <ng-template pTemplate="image">
+            <img src="/certificado1 (1).png" alt="image" width="400" />
+          </ng-template>
+          <ng-template
+            pTemplate="preview"
+            let-style="style"
+            let-previewCallback="previewCallback"
+          >
+            <img
+              src="/certificado1 (1).png"
+              alt="image"
+              [style]="style"
+              (click)="previewCallback()"
+            />
+          </ng-template>
+        </p-image>
+
+        <p-image class="flex justify-content-center" src="/JavaScript.png" [preview]="true" alt="Image" width="400">
+          <ng-template pTemplate="indicator">
+            <i class="pi pi-search"></i>
+          </ng-template>
+          <ng-template pTemplate="image">
+            <img src="/JavaScript.png" alt="image" width="400" />
+          </ng-template>
+          <ng-template
+            pTemplate="preview"
+            let-style="style"
+            let-previewCallback="previewCallback"
+          >
+            <img
+              src="/JavaScript.png"
+              alt="image"
+              [style]="style"
+              (click)="previewCallback()"
+            />
+          </ng-template>
+        </p-image>
+
+        <p-image
+        class="flex justify-content-center"
+          src="/metaetiquetas.png"
+          [preview]="true"
+          alt="Image"
+          width="400"
+        >
+          <ng-template pTemplate="indicator">
+            <i class="pi pi-search"></i>
+          </ng-template>
+          <ng-template pTemplate="image">
+            <img src="/metaetiquetas.png" alt="image" width="400" />
+          </ng-template>
+          <ng-template
+            pTemplate="preview"
+            let-style="style"
+            let-previewCallback="previewCallback"
+          >
+            <img
+              src="/metaetiquetas.png"
+              alt="image"
+              [style]="style"
+              (click)="previewCallback()"
+            />
+          </ng-template>
+        </p-image>
+
+        <p-image class="flex justify-content-center" src="/html.png" [preview]="true" alt="Image" width="400">
+          <ng-template pTemplate="indicator">
+            <i class="pi pi-search"></i>
+          </ng-template>
+          <ng-template pTemplate="image">
+            <img src="/CSSweb.png" alt="image" width="400" />
+          </ng-template>
+          <ng-template
+            pTemplate="preview"
+            let-style="style"
+            let-previewCallback="previewCallback"
+          >
+            <img
+              src="/html.png"
+              alt="image"
+              [style]="style"
+              (click)="previewCallback()"
+            />
+          </ng-template>
+        </p-image>
+
+        <p-image
+        class="flex justify-content-center"
+          src="/HTMLdesdecero.png"
+          [preview]="true"
+          alt="Image"
+          width="400"
+        >
+          <ng-template pTemplate="indicator">
+            <i class="pi pi-search"></i>
+          </ng-template>
+          <ng-template pTemplate="image">
+            <img src="/HTMLdesdecero.png" alt="image" width="400" />
+          </ng-template>
+          <ng-template
+            pTemplate="preview"
+            let-style="style"
+            let-previewCallback="previewCallback"
+          >
+            <img
+              src="/HTMLdesdecero.png"
+              alt="image"
+              [style]="style"
+              (click)="previewCallback()"
+            />
+          </ng-template>
+        </p-image>
+
+        <p-image
+          class="flex justify-content-center"
+          src="/FundamentosHTML.png"
+          [preview]="true"
+          alt="Image"
+          width="400"
+        >
+          <ng-template pTemplate="indicator">
+            <i class="pi pi-search"></i>
+          </ng-template>
+          <ng-template pTemplate="image">
+            <img src="/FundamentosHTML.png" alt="image" width="400" />
+          </ng-template>
+          <ng-template
+            pTemplate="preview"
+            let-style="style"
+            let-previewCallback="previewCallback"
+          >
+            <img
+              src="/FundamentosHTML.png"
+              alt="image"
+              [style]="style"
+              (click)="previewCallback()"
+            />
+          </ng-template>
+        </p-image>
+      </div>
+    </div>
+  </div>
+</p-drawer>
+
+<div #home class="animation-duration-1000s">
+  <div
+    class="flex flex-column p-2 text-center align-items-center justify-content-center"
+    style="margin-top: 15rem"
+  >
+    <div class="text-6xl fadeindown animation-duration-1000">Hi There,</div>
+
+    <div class="flex flex-wrap text-6xl fadeindown animation-duration-1000">
+      <div class="text-6xl fadeindown animation-duration-1000">I'm Fraulin</div>
+      <div
+        class="text-6xl ml-2 text-orange-500 fadeindown animation-duration-1000"
+      >
+        Nuñez
+      </div>
+    </div>
+
+    <div class="flex mt-2">
+      <div class="text-2xl fadeindown animation-duration-1000">I'm</div>
+      <div
+        class="text-2xl ml-1 text-red-500 fadeindown animation-duration-1000"
+      >
+        Web Developer
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="flex text-center text-2xl mt-3 justify-content-center fadeindown animation-duration-1000"
+  >
+    Systems engineering student with a passion for front-end development and
+    aspiring to become full-stack, acquiring knowledge in databases and learning
+    backend programming languages
+  </div>
+
+  <div
+    class="flex justify-content-center mt-5 fadeindown animation-duration-1000"
+  >
+    <p-button
+      severity="secondary"
+      size="large"
+      class="mr-2"
+      icon="pi pi-angle-right"
+      iconPos="right"
+      label="My Projects"
+      [severity]="isDarkMode ? 'secondary' : 'contrast'"
+      (onClick)="scrollToproyecto()"
+    ></p-button>
+    <p-button
+      [severity]="isDarkMode ? 'secondary' : 'contrast'"
+      size="large"
+      iconPos="right"
+      icon="pi pi-download"
+      label="Download CV"
+      (onClick)="cvDownload()"
+    ></p-button>
+  </div>
+</div>
+
+<div #skills>
+  <div
+    class="flex justify-content-center fadeindown animation-duration-1000"
+    style="margin-top: 40rem"
+  >
+    <div
+      class="flex flex-column text-6xl font-bold text-orange-500 tracking-wide drop-shadow-lg"
+    >
+      <div class="flex">
+        Experience
+        <i class="pi pi-pencil mt-4 ml-2 small"></i>
+      </div>
+      <div class="flex-column bg-orange-500 py-1 w-full mx-auto mt-1"></div>
+    </div>
+  </div>
+
+  <div
+    class="grid grid-nogutter justify-content-center mt-7 fadeindown animation-duration-1000"
+  >
+    <div
+      class="col-6 xs:col-6 sm:col-6 md:col-3 mt-4 flex justify-content-center"
+    >
+      <div class="flex-column text-center p-4 card-hover">
+        <img src="angular.png" alt="" height="70" />
+        <div class="text-2xl">Angular</div>
+      </div>
+    </div>
+
+    <div
+      class="col-6 xs:col-6 sm:col-6 mt-4 md:col-3 flex justify-content-center"
+    >
+      <div class="flex-column text-center p-4 card-hover">
+        <img src="ionic2.png" alt="" height="70" />
+        <div class="text-2xl">Ionic</div>
+      </div>
+    </div>
+
+    <div
+      class="col-6 xs:col-6 sm:col-6 mt-4 md:col-3 flex justify-content-center"
+    >
+      <div class="flex-column text-center p-4 card-hover">
+        <img src="reactlogo.png" alt="" height="70" />
+        <div class="text-2xl">React</div>
+      </div>
+    </div>
+
+    <div
+      class="col-6 xs:col-4 sm:col-6 mt-4 md:col-3 flex justify-content-center"
+    >
+      <div class="flex-column text-center p-4 card-hover">
+        <img src="primeng-logo.png" alt="" height="70" />
+        <div class="text-2xl">Primeng</div>
+      </div>
+    </div>
+
+    <div
+      class="col-6 xs:col-6 sm:col-6 mt-4 md:col-3 flex justify-content-center"
+    >
+      <div class="flex-column text-center p-4 card-hover">
+        <img src="primeflex.png" alt="" height="70" />
+        <div class="text-2xl">Primeflex</div>
+      </div>
+    </div>
+
+    
+
+    <div
+      class="col-6 xs:col-6 sm:col-6 md:col-3 mt-4 flex justify-content-center"
+    >
+      <div class="flex-column text-center p-4 card-hover">
+        <img src="html.png" alt="" height="70" />
+        <div class="text-2xl">Html</div>
+      </div>
+    </div>
+
+    <div
+      class="col-6 xs:col-6 sm:col-6 md:col-3 mt-4 flex justify-content-center"
+    >
+      <div class="flex-column text-center p-4 card-hover">
+        <img src="css.png" alt="" height="70" />
+        <div class="text-2xl">Css</div>
+      </div>
+    </div>
+
+    <div
+      class="col-6 xs:col-6 sm:col-6 md:col-3 mt-4 flex justify-content-center"
+    >
+      <div class="flex-column text-center p-4 card-hover">
+        <img src="git.png" alt="" height="70" />
+        <div class="text-2xl">Git</div>
+      </div>
+    </div>
+
+    <div
+      class="col-6 xs:col-6 sm:col-6 md:col-3 mt-4 flex justify-content-center"
+    >
+      <div class="flex-column text-center p-4 card-hover">
+        <img src="nodejs.png" alt="Nodejs" height="70" />
+        <div class="text-2xl mt-2">Nodejs</div>
+      </div>
+    </div>
+
+    <div
+      class="col-6 xs:col-6 sm:col-6 md:col-3 mt-4 flex justify-content-center"
+    >
+      <div class="flex-column text-center p-4 card-hover">
+        <img src="JavaScript-logo.png" alt="" height="70" />
+        <div class="text-2xl">JavaScript</div>
+      </div>
+    </div>
+
+    <div
+      class="col-6 xs:col-6 sm:col-6 md:col-3 mt-4 flex justify-content-center"
+    >
+      <div class="flex-column text-center p-4 card-hover">
+        <img src="Typescript.png" alt="" height="70" />
+        <div class="text-2xl">Typescript</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div #proyectos class="fadeinleft" style="margin-top: 40rem">
+  <div class="flex justify-content-center">
+    <div
+      class="flex flex-column text-6xl text-center font-bold text-orange-500 tracking-wide drop-shadow-lg"
+    >
+      <div class="flex text-center">
+        Projects
+        <i class="pi pi-verified mt-4 ml-2"></i>
+      </div>
+      <div class="bg-orange-500 py-1 w-full mx-auto mt-1"></div>
+    </div>
+  </div>
+
+  <div
+    class="grid grid-nogutter mt-4 align-items-center justify-content-center gap-3"
+  >
+    <div
+      class="flex flex-column col-10 sm:col-6 md:col-5 card-hover-pro align-items-center justify-content-center"
+    >
+      <img src="Store.png" alt="" class="w-full max-w-25rem h-16rem" />
+      <div class="p-2 chanceMode text-center w-full">
+        <div class="font-bold text-1xl">
+          Technology Store, Responsive and Darkmode - Angular
+        </div>
+        <div class="mt-2">
+          <p-button
+            class="mr-2"
+            label="View"
+            (onClick)="viewTechnology()"
+            [severity]="isDarkMode ? 'secondary' : 'contrast'"
+          ></p-button>
+          <p-button label="Code" [severity]="isDarkMode ? 'secondary' : 'contrast' " (onClick)="viewTechnologyCode()"></p-button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-column card-hover-pro col-10 sm:col-6 md:col-5 align-items-center justify-content-center"
+    >
+      <img src="rickandmorty.png" alt="" class="w-full max-w-25rem h-16rem" />
+      <div class="chanceMode p-2 text-center w-full">
+        <div class="text-1xl font-bold">
+          API Consumption and Character Search, Responsive Design, Ionic -
+          Angular
+        </div>
+        <div class="mt-2">
+          <p-button class="mr-2" [severity]="isDarkMode ? 'secondary' : 'contrast' " label="View" (onClick)="viewApi()"></p-button>
+          <p-button label="Code" [severity]="isDarkMode ? 'secondary' : 'contrast' " (onClick)="viewApiCode()"></p-button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-column col-10 card-hover-pro sm:col-6 md:col-5 align-items-center justify-content-center"
+    >
+      <img src="todolist.png" alt="" class="w-full max-w-25rem h-16rem" />
+      <div class="p-2 chanceMode text-center w-full">
+        <div class="font-bold text-1xl">
+          To Do List, Responsive Design, Ionic - Angular
+        </div>
+        <div class="mt-2">
+          <p-button
+            class="mr-2"
+            label="View"
+            [severity]="isDarkMode ? 'secondary' : 'contrast' "
+            (onClick)="viewTodoList()"
+          ></p-button>
+          <p-button label="Code" [severity]="isDarkMode ? 'secondary' : 'contrast' " (onClick)="viewTodoListCode()"></p-button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-column col-10 card-hover-pro sm:col-6 md:col-5 align-items-center justify-content-center"
+    >
+      <img src="calculadora.png" alt="" class="w-full max-w-25rem h-16rem" />
+      <div class="p-2 chanceMode text-center w-full">
+        <div class="font-bold text-1xl">
+          Calculator - Responsive Design - React
+        </div>
+        <div class="mt-2">
+          <p-button
+            class="mr-2"
+            label="View"
+            [severity]="isDarkMode ? 'secondary' : 'contrast' "
+            (onClick)="viewCalculator()"
+          ></p-button>
+          <p-button label="Code" [severity]="isDarkMode ? 'secondary' : 'contrast' " (onClick)="viewCalculatorCode()"></p-button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-column col-10 card-hover-pro sm:col-6 md:col-5 align-items-center justify-content-center"
+    >
+      <img src="clics.png" alt="" class="w-full max-w-25rem h-16rem" />
+      <div class="p-2 chanceMode text-center w-full">
+        <div class="font-bold text-1xl">
+          Counter Clips, Responsive Design - React
+        </div>
+        <div class="mt-2">
+          <p-button
+            class="mr-2"
+            label="View"
+            (onClick)="viewClips()"
+            [severity]="isDarkMode ? 'secondary' : 'contrast' "
+          ></p-button>
+          <p-button label="Code" [severity]="isDarkMode ? 'secondary' : 'contrast' " (onClick)="viewClipsCode()"></p-button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-column col-10 card-hover-pro sm:col-6 md:col-5 align-items-center justify-content-center"
+    >
+      <img src="freecodecamp.png" alt="" class="w-full max-w-25rem h-16rem" />
+      <div class="p-2 chanceMode text-center w-full">
+        <div class="font-bold text-1xl">Testimonials - React</div>
+        <div class="mt-2">
+          <p-button
+            class="mr-2"
+            label="View"
+            [severity]="isDarkMode ? 'secondary' : 'contrast' "
+            (onClick)="viewTestimonios()"
+          ></p-button>
+          <p-button label="Code" [severity]="isDarkMode ? 'secondary' : 'contrast' " (onClick)="viewTestimoniosCode()"></p-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div #contact>
+  <footer class="footerchance  bg-gray-100 p-6" style="margin-top: 40rem">
+    <div>
+      <div class="text-4xl mt-1">
+        <div class="font-bold text-orange-500">
+          Let's Conect and Collaborate
+        </div>
+      </div>
+
+      <div class="text-xl mt-2">
+        <div>
+          we're excited to hear about your vision and explore how we can bring
+          it to life togeter
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-column sm:flex-row sm:justify-content-between sm:w-full md:w-auto mb-2 md:mb-0 border-top-1 mb-2 mt-3 p-1"
+    >
+      <!-- Sección Izquierda: Teléfono y Correo -->
+      <div class="flex flex-column sm:w-full md:w-auto mb-2 mt-2 md:mb-0">
+        <div class="flex align-items-center mb-2">
+          <a [classList]="isDarkMode ? 'footerchance' : 'text-color' " href="tel:+18098612456" target="_blank">
+            <i class="pi pi-whatsapp mr-2 text-green-500"></i>
+            <span>+1 809-861-1821</span>
+          </a>
+        </div>
+        <div class="flex align-items-center mb-2">
+          <a
+            [classList]="isDarkMode ? 'footerchance' : 'text-color' "
+            [attr.href]="'mailto:' + 'fraulinbvr0320@gmail.com'"
+            target="_blank"
+          >
+            <i class="pi pi-envelope mr-2 text-red-500"></i>
+            <span>{{ "fraulin0320" + "@gmail.com" }}</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Sección Derecha: Redes Sociales -->
+      <div
+        class="flex flex-column sm:w-full md:w-auto align-items-start md:align-items-end"
+      >
+        <span
+          class="font-bold text-orange-500 font-bold align-items-center justify-content-center text-center"
+          style="margin-right: 7rem"
+          >My social media:</span
+        >
+        <div class="flex flex-wrap gap-3 mt-2">
+          <a href="https://github.com/FraulinNunez" [classList]="isDarkMode ? 'footerchance' : 'text-color' ">
+            <i class="pi pi-github mr-2"></i>
+            <span>GitHub</span>
+          </a>
+          <a
+            href="https://www.instagram.com/accounts/login/"
+            [classList]="isDarkMode ? 'footerchance' : 'text-color' "
+          >
+            <i class="pi pi-instagram mr-2 text-red-500"></i>
+            <span>INSTAGRAM</span>
+          </a>
+          <a href="https://www.facebook.com/" [classList]="isDarkMode ? 'footerchance' : 'text-color' ">
+            <i class="pi pi-facebook mr-2 text-blue-500"></i>
+            <span>FACEBOOK</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="border-top-1 mt-2" >
+    
+  </div> -->
+  </footer>
+</div>

@@ -1,1 +1,115 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'primeflex/primeflex.scss';
+@import "primeicons/primeicons.css";
+
+
+.card-hover {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-5px); /* Eleva el elemento */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra más fuerte */
+  }
+
+
+  .card-hover-pro{
+    transition: transform 0.4s ease-in-out;
+  }
+  
+  .card-hover-pro:hover {
+    transform: scale(1.1);
+  }
+  
+  .card-hover-pro:active {
+    transform: scale(0.9);
+  }
+
+
+
+  .preview-container {
+    touch-action: none; /* Desactiva el comportamiento táctil por defecto */
+    overflow: hidden;   /* Evita que la imagen se salga del contenedor */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* Ajusta al alto de tu menú fijo */
+}
+
+/* DarkMode */
+
+/* 🌙 Modo Oscuro */
+.dark-theme {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+/* 🟡 Estilos de PrimeNG en Modo Oscuro */
+.dark-theme p-button {
+  border-color: #666 !important;
+  color: #fff !important;
+}
+
+.dark-theme p-button:hover {
+  border-color: #E5E7EB !important;
+}
+
+.dark-theme .p-menubar{
+  background-color: #2a2a2a !important;
+  color: #ffffff !important;
+}
+.dark-theme .p-menubar.p-menubar-mobile-active .p-menubar-root-list {
+  background-color: #2a2a2a !important;
+  color: #ffffff !important;
+}
+.dark-theme .ln{
+   background-color: #2a2a2a !important;
+  color: #ffffff !important;
+}
+
+.dark-theme .chanceMode{
+  background-color: #2a2a2a !important;
+  color: #ffffff !important;
+}
+
+.dark-theme .p-menubar-item-content{
+  background-color: #2a2a2a !important;
+  color: #ffffff !important;
+}
+
+.dark-theme .p-icon{
+  background-color: #2a2a2a !important;
+  color: #ffffff !important;
+}
+
+.chanceMode{
+  background-color: #E5E7EB;
+
+}
+
+.dark-theme .footerchance {
+   background-color: #2a2a2a !important;
+    color: #ffffff !important;
+    
+}
+
+.footerchance{
+  background-color: #E5E7EB;
+}
+
+.dark-theme .p-drawer-content{
+background-color: #2a2a2a !important;
+    color: #ffffff !important;
+
+}
+
+.dark-theme .p-drawer-header {
+    background-color: #2a2a2a !important;
+    color: #ffffff !important;
+}
