@@ -139,7 +139,7 @@ viewTestimoniosCode(){
 //Descargar cv
 cvDownload(){
   const link = document.createElement('a');
-  link.href = '/Currículum Vitae CV Fraulin Nuñez.pdf';
+  link.href = 'Currículum Vitae CV Fraulin Nuñez.pdf';
   link.download = 'CV_Fraulin_Nuñez.pdf';
   link.target = '_blank';
   link.click();
