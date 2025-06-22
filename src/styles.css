@@ -3,6 +3,17 @@
 @import "primeicons/primeicons.css";
 
 
+@layer reset {
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --p-tooltip-background: initial;
+      --p-tooltip-color: initial;
+    }
+  }
+}
+
+
+
 .card-hover {
     transition: all 0.3s ease-in-out;
   }
@@ -44,14 +55,204 @@
 
 /* DarkMode */
 
-/* 🌙 Modo Oscuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: light !important;
+  }
+}
+
+.light-theme {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+.light-theme p-button{
+  color: #000 !important;
+}
+
+
+/* .light-theme .p-button .p-button-label {
+  color: #fff !important;
+} */
+
+
+.light-theme p-button:hover {
+  border-color: #E5E7EB !important;
+}
+
+.light-theme .p-menubar{
+  background-color: #fff !important ; 
+  color: #000 !important;
+}
+.light-theme .p-menubar.p-menubar-mobile-active .p-menubar-root-list {
+  background-color: #fff !important ; 
+  color: #000 !important;
+}
+.light-theme .ln{
+   background-color: #fff !important ; 
+  color: #000 !important;
+}
+
+.light-theme .chanceMode{
+  background-color: #fff !important ; 
+  color: #000 !important;
+}
+
+.light-theme .spanmode {
+    color: #000 !important;
+    
+}
+
+
+.light-theme .span {
+    color: #fff !important;
+    
+}
+
+.light-theme .p-menubar-item-content{
+  background-color: #fff !important ; 
+  color: #000 !important;
+}
+
+.light-theme .p-icon{
+  background-color: #fff !important ; 
+  color: #000 !important;
+}
+
+.light-theme .chanceMode{
+  background-color: #E5E7EB !important;
+
+}
+
+.light-theme .footerchance {
+   background-color: #E5E7EB !important;
+    color: #000 !important;
+    
+}
+
+.light-theme .spanmode {
+    color: #000 !important;
+    
+}
+
+
+.light-theme .p-drawer-content{
+background-color: #fff !important ; 
+  color: #000 !important;
+
+}
+
+.light-theme .p-drawer-header {
+    background-color: #fff !important ; 
+  color: #000 !important;
+} 
+
+
+
+
+
+
+
+
+
+
 .dark-theme {
+  background-color: #1e1e1e !important;
+  color: #fff !important;
+
+}
+
+ .dark-theme p-button {
+  border-color: #666 !important;
+  color: #fff !important;
+}
+
+.dark-theme p-button:hover {
+  border-color: #E5E7EB !important;
+}
+
+/* .dark-theme .p-button .p-button-label  {
+  color: #000 !important;
+} */
+
+.dark-theme .spanmode {
+    color: #ffffff !important;
+    
+}
+
+
+.dark-theme .span {
+    color: #000 !important;
+    
+}
+
+.dark-theme .p-menubar{
+  background-color: #2a2a2a !important;
+  color: #ffffff !important;
+}
+.dark-theme .p-menubar.p-menubar-mobile-active .p-menubar-root-list {
+  background-color: #2a2a2a !important;
+  color: #ffffff !important;
+}
+.dark-theme .ln{
+   background-color: #2a2a2a !important;
+  color: #ffffff !important;
+}
+
+.dark-theme .chanceMode{
+  background-color: #2a2a2a !important;
+  color: #ffffff !important;
+}
+
+.dark-theme .p-menubar-item-content{
+  background-color: #2a2a2a !important;
+  color: #ffffff !important;
+}
+
+.dark-theme .p-icon{
+  background-color: #2a2a2a !important;
+  color: #ffffff !important;
+}
+
+.chanceMode{
+  background-color: #E5E7EB !important;
+
+}
+
+.dark-theme .footerchance {
+   background-color: #2a2a2a !important;
+    color: #ffffff !important;
+    
+}
+
+.footerchance{
+  background-color: #E5E7EB;
+}
+
+.dark-theme .p-drawer-content{
+background-color: #2a2a2a !important;
+    color: #ffffff !important;
+
+}
+
+.dark-theme .p-drawer-header {
+    background-color: #2a2a2a !important;
+    color: #ffffff !important;
+}
+
+
+
+
+
+
+/* 🌙 Modo Oscuro */
+/* .dark-theme {
   background-color: #1e1e1e;
   color: #ffffff;
 }
 
 /* 🟡 Estilos de PrimeNG en Modo Oscuro */
-.dark-theme p-button {
+/* .dark-theme p-button {
   border-color: #666 !important;
   color: #fff !important;
 }
@@ -89,7 +290,7 @@
 }
 
 .chanceMode{
-  background-color: #E5E7EB;
+  background-color: #E5E7EB !important;
 
 }
 
@@ -113,6 +314,83 @@ background-color: #2a2a2a !important;
     background-color: #2a2a2a !important;
     color: #ffffff !important;
 }
+  */
+
+
+
+
+
+/* light mode */
+/* .light-theme {
+  background-color: #fff !important ; 
+  color: #000 !important;
+}
+
+.light-theme p-button:hover {
+  border-color: #E5E7EB !important;
+}
+
+.light-theme .p-menubar{
+  background-color: #fff !important ; 
+  color: #000 !important;
+}
+.light-theme .p-menubar.p-menubar-mobile-active .p-menubar-root-list {
+  background-color: #fff !important ; 
+  color: #000 !important;
+}
+.light-theme .ln{
+   background-color: #fff !important ; 
+  color: #000 !important;
+}
+
+.light-theme .chanceMode{
+  background-color: #fff !important ; 
+  color: #000 !important;
+}
+
+.light-theme .p-menubar-item-content{
+  background-color: #fff !important ; 
+  color: #000 !important;
+}
+
+.light-theme .p-icon{
+  background-color: #fff !important ; 
+  color: #000 !important;
+}
+
+.light-theme .chanceMode{
+  background-color: #E5E7EB !important;
+
+}
+
+.light-theme .footerchance {
+   background-color: #E5E7EB !important;
+    color: #000 !important;
+    
+}
+
+.light-theme .spanmode {
+    color: #000 !important;
+    
+}
+
+.light-theme span {
+  color: #000 !important;
+}
+
+
+.light-theme .p-drawer-content{
+background-color: #fff !important ; 
+  color: #000 !important;
+
+}
+
+.light-theme .p-drawer-header {
+    background-color: #fff !important ; 
+  color: #000 !important;
+} */
+
+
 
 
 @keyframes slideInLeft {
@@ -132,3 +410,4 @@ background-color: #2a2a2a !important;
   animation-duration: 0.6s;
   opacity: 0; /* Para que inicie invisible y luego aparezca */
 }
+

@@ -145,22 +145,23 @@ cvDownload(){
 
 
 //darkMode
-darkMode(){
+darkMode() {
+    const body = document.body;
   this.isDarkMode = !this.isDarkMode;
-  const body = document.body;
 
-  if(this.isDarkMode){
+  if (this.isDarkMode) {
+    body.classList.remove('light-theme');
     body.classList.add('dark-theme');
-
-  }else {
+  } else {
     body.classList.remove('dark-theme');
+    body.classList.add('light-theme');
   }
-
 }
 
 
 
 ngOnInit(): void {
+  
   this.items = [
       {
     label: 'Home',
